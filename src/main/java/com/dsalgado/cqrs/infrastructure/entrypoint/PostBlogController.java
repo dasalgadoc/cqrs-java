@@ -22,16 +22,23 @@ public class PostBlogController {
   }
 
   @PostMapping("/blog")
-  public HttpStatus createBlog(@RequestBody CreateBlogCommand request) {
-    if (request.isValid()) {
+  public HttpStatus createBlog(@RequestBody BlogDto request) {
+    CreateBlogCommand command =
+        new CreateBlogCommand(
+            request.getId(),
+            request.getTitle(),
+            request.getType(),
+            request.getBrief(),
+            request.getUrl());
+    if (command.isValid()) {
       return HttpStatus.BAD_REQUEST;
     }
 
-    this.dispatch(request);
+    this.dispatch(command);
     return HttpStatus.OK;
   }
 
-  private void dispatch(CreateBlogCommand request) {
-    commandBus.dispatch(request);
+  private void dispatch(CreateBlogCommand command) {
+    commandBus.dispatch(command);
   }
 }

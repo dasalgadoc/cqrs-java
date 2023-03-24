@@ -7,7 +7,7 @@ public class BlogUrl extends StringValueObject {
 
   public BlogUrl(String value) {
     super(value);
-    if (value.matches(URL_REGEX)) {
+    if (!value.matches(URL_REGEX)) {
       throw new InvalidBlogType(BlogUrl.class.getSimpleName());
     }
   }

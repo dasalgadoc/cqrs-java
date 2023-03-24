@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 public class MySqlBlogRepository implements BlogRepository {
   @Override
   public void save(Blog blog) {
-    throw new RuntimeException("Not implemented yet");
+    System.out.println("Guardar sin implementar");
   }
 
   @Override

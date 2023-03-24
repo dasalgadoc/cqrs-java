@@ -25,7 +25,6 @@ public class BlogCreator {
 
   public void create(BlogId id, BlogTitle title, BlogType type, BlogBrief brief, BlogUrl url) {
     Blog blog = Blog.create(id, title, type, brief, url);
-    System.out.println("Pasé por el creator de blogs");
 
     blogRepository.save(blog);
 

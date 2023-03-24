@@ -40,4 +40,20 @@ public class Blog {
   public BlogUrl getUrl() {
     return url;
   }
+
+  @Override
+  public String toString() {
+    return "Blog{"
+        + "id="
+        + id.getValue()
+        + ", title="
+        + title.getValue()
+        + ", type="
+        + type.getValue()
+        + ", brief="
+        + brief.getValue()
+        + ", url="
+        + url.getValue()
+        + '}';
+  }
 }

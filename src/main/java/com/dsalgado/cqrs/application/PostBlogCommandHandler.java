@@ -16,6 +16,10 @@ public class PostBlogCommandHandler implements CommandHandler<CreateBlogCommand>
 
   @Autowired private BlogCreator blogCreator;
 
+  public PostBlogCommandHandler(BlogCreator blogCreator) {
+    this.blogCreator = blogCreator;
+  }
+
   @Override
   public <T extends Command> void invoke(T command) {
     CreateBlogCommand createBlogCommand = (CreateBlogCommand) command;

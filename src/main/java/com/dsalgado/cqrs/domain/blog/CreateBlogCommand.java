@@ -4,8 +4,12 @@ import com.dsalgado.cqrs.domain.bus.Command;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
+@JsonTypeName("CreateBlogCommand")
 public class CreateBlogCommand extends Command {
+  @JsonIgnore public static final String COMMAND_TYPE = "CreateBlogCommand";
+
   @JsonProperty("id")
   private String id;
 
@@ -28,6 +32,7 @@ public class CreateBlogCommand extends Command {
       @JsonProperty("type") String type,
       @JsonProperty("brief") String brief,
       @JsonProperty("url") String url) {
+    super(COMMAND_TYPE);
     this.id = id;
     this.title = title;
     this.type = type;
