@@ -9,7 +9,9 @@ import com.dsalgado.cqrs.domain.blog.CreateBlogCommand;
 import com.dsalgado.cqrs.domain.bus.Command;
 import com.dsalgado.cqrs.domain.bus.CommandHandler;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class PostBlogCommandHandler implements CommandHandler<CreateBlogCommand> {
 
   @Autowired private BlogCreator blogCreator;

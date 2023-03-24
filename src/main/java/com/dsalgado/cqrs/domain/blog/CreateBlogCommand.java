@@ -1,6 +1,8 @@
 package com.dsalgado.cqrs.domain.blog;
 
 import com.dsalgado.cqrs.domain.bus.Command;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CreateBlogCommand extends Command {
@@ -19,7 +21,13 @@ public class CreateBlogCommand extends Command {
   @JsonProperty("url")
   private String url;
 
-  public CreateBlogCommand(String id, String title, String type, String brief, String url) {
+  @JsonCreator
+  public CreateBlogCommand(
+      @JsonProperty("id") String id,
+      @JsonProperty("title") String title,
+      @JsonProperty("type") String type,
+      @JsonProperty("brief") String brief,
+      @JsonProperty("url") String url) {
     this.id = id;
     this.title = title;
     this.type = type;
@@ -48,14 +56,17 @@ public class CreateBlogCommand extends Command {
   }
 
   @Override
+  @JsonIgnore
   public boolean isValid() {
     return this == null || hasNull() || hasEmpties();
   }
 
+  @JsonIgnore
   private boolean hasNull() {
     return id == null || title == null || type == null || brief == null || url == null;
   }
 
+  @JsonIgnore
   private boolean hasEmpties() {
     return id.isEmpty() || title.isEmpty() || type.isEmpty() || brief.isEmpty() || url.isEmpty();
   }
