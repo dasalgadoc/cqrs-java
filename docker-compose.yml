@@ -1,0 +1,21 @@
+version: "2"
+
+services:
+  rabbitmq-container:
+    image: rabbitmq:3-management
+    ports:
+      - 5672:5672
+      - 15672:15672
+    volumes:
+    - ./resources/definitions.json:/etc/rabbitmq/definitions.json:ro
+    - ./resources/rabbitmq.config:/etc/rabbitmq/rabbitmq.config:ro
+
+  app-container:
+    build:
+      dockerfile: ./Dockerfile
+    ports:
+      - 8085:8080
+    environment:
+      - SPRING_RABBITMQ_HOST=rabbitmq-container
+    depends_on:
+      - rabbitmq-container
