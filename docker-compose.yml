@@ -28,3 +28,4 @@ services:
       - SPRING_RABBITMQ_HOST=rabbitmq-container
     depends_on:
       - rabbitmq-container
+      - mysql-container
