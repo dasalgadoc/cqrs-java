@@ -10,6 +10,15 @@ services:
     - ./resources/definitions.json:/etc/rabbitmq/definitions.json:ro
     - ./resources/rabbitmq.config:/etc/rabbitmq/rabbitmq.config:ro
 
+  mysql-container:
+    image: mysql
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    volumes:
+      - ./resources/mysql:/docker-entrypoint-initdb.d:ro
+
   app-container:
     build:
       dockerfile: ./Dockerfile
