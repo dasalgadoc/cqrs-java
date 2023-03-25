@@ -5,7 +5,6 @@ import com.dsalgado.cqrs.domain.blog.BlogId;
 import com.dsalgado.cqrs.domain.blog.BlogTitle;
 import com.dsalgado.cqrs.domain.blog.BlogType;
 import com.dsalgado.cqrs.domain.blog.BlogUrl;
-import com.dsalgado.cqrs.domain.blog.CreateBlogCommand;
 import com.dsalgado.cqrs.domain.bus.Command;
 import com.dsalgado.cqrs.domain.bus.CommandHandler;
 import org.springframework.beans.factory.annotation.Autowired;

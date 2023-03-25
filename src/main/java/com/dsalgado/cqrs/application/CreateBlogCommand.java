@@ -1,4 +1,4 @@
-package com.dsalgado.cqrs.domain.blog;
+package com.dsalgado.cqrs.application;
 
 import com.dsalgado.cqrs.domain.bus.Command;
 import com.fasterxml.jackson.annotation.JsonCreator;

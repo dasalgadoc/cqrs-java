@@ -1,8 +1,8 @@
 package com.dsalgado.cqrs.infrastructure.bus;
 
 import com.dsalgado.cqrs.application.BlogCreator;
+import com.dsalgado.cqrs.application.CreateBlogCommand;
 import com.dsalgado.cqrs.application.PostBlogCommandHandler;
-import com.dsalgado.cqrs.domain.blog.CreateBlogCommand;
 import com.dsalgado.cqrs.domain.bus.Command;
 import com.dsalgado.cqrs.domain.bus.CommandHandler;
 import java.util.ArrayList;
