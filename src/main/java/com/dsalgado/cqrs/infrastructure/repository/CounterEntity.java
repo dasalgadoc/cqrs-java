@@ -1,5 +1,8 @@
 package com.dsalgado.cqrs.infrastructure.repository;
 
+import com.dsalgado.cqrs.domain.counter.EntityCounter;
+import com.dsalgado.cqrs.domain.counter.EntityEntries;
+import com.dsalgado.cqrs.domain.counter.EntityName;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -34,5 +37,20 @@ public class CounterEntity {
 
   public void setEntries(Integer entries) {
     this.entries = entries;
+  }
+
+  public void entriesPlusOne() {
+    this.entries++;
+  }
+
+  public EntityCounter persistenceEntityToEntityCounter() {
+    EntityName entityName = new EntityName(entity);
+    EntityEntries entityEntries = new EntityEntries(entries);
+    return new EntityCounter(entityName, entityEntries);
+  }
+
+  public static CounterEntity entityCounterToPersistenceEntity(EntityCounter entityCounter) {
+    return new CounterEntity(
+        entityCounter.getEntityName().getValue(), entityCounter.getEntityEntries().getValue());
   }
 }

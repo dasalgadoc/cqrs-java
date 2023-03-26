@@ -22,7 +22,7 @@ public class CommandBusFactory {
   public CommandBus getCommandBus() {
     Optional<CommandBus> commandBus = retrieveCommandBus();
     if (!commandBus.isPresent()) {
-      throw new UnableToBuildCommandBus(commandBusName);
+      throw new UnableToBuildBus(commandBusName);
     }
     return commandBus.get();
   }

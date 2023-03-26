@@ -22,10 +22,10 @@ public class MySqlBlogRepository implements BlogRepository {
   @Override
   public Blog find(BlogId blogId) {
     Optional<BlogEntity> returned = mySqlBlogCrudRepository.findById(blogId.getValue().toString());
-    if (returned.isPresent()) {
-      return returned.get().entityToBlog();
+    if (!returned.isPresent()) {
+      throw new RuntimeException("Blog not found");
     }
-    throw new RuntimeException("Blog not found");
+    return returned.get().entityToBlog();
   }
 
   @Override
