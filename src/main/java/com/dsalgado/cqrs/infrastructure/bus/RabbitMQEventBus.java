@@ -27,9 +27,7 @@ public class RabbitMQEventBus implements EventBus {
   @Override
   public <T extends DomainEvent> void notify(T event) {
     try {
-      System.out.println("Llegue a la cola de eventos");
-      System.out.println(event);
-      // this.publish(event);
+      this.publish(event);
     } catch (Exception ex) {
     }
   }

@@ -1,10 +1,14 @@
 package com.dsalgado.cqrs.infrastructure.bus;
 
+import com.dsalgado.cqrs.application.BlogCounter;
 import com.dsalgado.cqrs.application.BlogCreator;
 import com.dsalgado.cqrs.application.CreateBlogCommand;
 import com.dsalgado.cqrs.application.PostBlogCommandHandler;
 import com.dsalgado.cqrs.domain.bus.Command;
 import com.dsalgado.cqrs.domain.bus.CommandHandler;
+import com.dsalgado.cqrs.domain.events.BlogCreatedDomainEvent;
+import com.dsalgado.cqrs.domain.events.DomainEvent;
+import com.dsalgado.cqrs.domain.events.EventObserver;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -14,10 +18,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class CommandHandlerConfiguration {
+public class RabbitMQConfiguration {
   @Autowired private final BlogCreator blogCreator;
 
-  public CommandHandlerConfiguration(BlogCreator blogCreator) {
+  public RabbitMQConfiguration(BlogCreator blogCreator) {
     this.blogCreator = blogCreator;
   }
 
@@ -33,5 +37,17 @@ public class CommandHandlerConfiguration {
     // add more commandHandlers here for other commands
 
     return commandHandlers;
+  }
+
+  @Bean
+  public Map<String, List<EventObserver<? extends DomainEvent>>> eventObservers() {
+    Map<String, List<EventObserver<? extends DomainEvent>>> eventObservers = new HashMap<>();
+
+    List<EventObserver<? extends DomainEvent>> blogCreatedObservers = new ArrayList<>();
+    blogCreatedObservers.add(new BlogCounter());
+
+    eventObservers.put(BlogCreatedDomainEvent.EVENT_NAME, blogCreatedObservers);
+
+    return eventObservers;
   }
 }
