@@ -20,9 +20,11 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class RabbitMQConfiguration {
   @Autowired private final BlogCreator blogCreator;
+  @Autowired private final BlogCounter blogCounter;
 
-  public RabbitMQConfiguration(BlogCreator blogCreator) {
+  public RabbitMQConfiguration(BlogCreator blogCreator, BlogCounter blogCounter) {
     this.blogCreator = blogCreator;
+    this.blogCounter = blogCounter;
   }
 
   @Bean
@@ -44,7 +46,7 @@ public class RabbitMQConfiguration {
     Map<String, List<EventObserver<? extends DomainEvent>>> eventObservers = new HashMap<>();
 
     List<EventObserver<? extends DomainEvent>> blogCreatedObservers = new ArrayList<>();
-    blogCreatedObservers.add(new BlogCounter());
+    blogCreatedObservers.add(blogCounter);
 
     eventObservers.put(BlogCreatedDomainEvent.EVENT_NAME, blogCreatedObservers);
 
