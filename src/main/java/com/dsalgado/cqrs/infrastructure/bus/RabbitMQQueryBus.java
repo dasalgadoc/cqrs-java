@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.util.concurrent.TimeoutException;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -21,7 +20,6 @@ public class RabbitMQQueryBus implements QueryBus {
 
   private final RabbitServer rabbitServer;
 
-  @Autowired
   public RabbitMQQueryBus(RabbitServer rabbitServer) {
     this.rabbitServer = rabbitServer;
   }
