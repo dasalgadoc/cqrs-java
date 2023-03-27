@@ -1,5 +1,6 @@
 package com.dsalgado.cqrs.infrastructure.bus;
 
+import com.dsalgado.cqrs.application.blog.BlogResponse;
 import com.dsalgado.cqrs.domain.bus.Query;
 import com.dsalgado.cqrs.domain.bus.QueryBus;
 import com.dsalgado.cqrs.domain.bus.Response;
@@ -35,7 +36,7 @@ public class RabbitMQQueryBus implements QueryBus {
       throw new RuntimeException("there is no response");
     }
 
-    return null;
+    return new BlogResponse("xxx", "the title", "the type", "the brief", "the url");
   }
 
   public void publish(Query query) throws IOException, TimeoutException {
