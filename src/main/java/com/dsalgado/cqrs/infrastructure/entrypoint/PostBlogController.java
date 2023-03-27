@@ -1,6 +1,6 @@
 package com.dsalgado.cqrs.infrastructure.entrypoint;
 
-import com.dsalgado.cqrs.application.CreateBlogCommand;
+import com.dsalgado.cqrs.application.blog.CreateBlogCommand;
 import com.dsalgado.cqrs.domain.bus.CommandBus;
 import com.dsalgado.cqrs.domain.bus.CommandBusFactory;
 import javax.annotation.PostConstruct;

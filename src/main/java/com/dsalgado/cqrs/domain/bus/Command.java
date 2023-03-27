@@ -1,6 +1,6 @@
 package com.dsalgado.cqrs.domain.bus;
 
-import com.dsalgado.cqrs.application.CreateBlogCommand;
+import com.dsalgado.cqrs.application.blog.CreateBlogCommand;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;

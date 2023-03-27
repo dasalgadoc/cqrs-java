@@ -1,6 +1,6 @@
 package com.dsalgado.cqrs.domain.events;
 
-import com.dsalgado.cqrs.application.CreateBlogCommand;
+import com.dsalgado.cqrs.application.blog.CreateBlogCommand;
 import com.dsalgado.cqrs.domain.blog.Blog;
 import com.dsalgado.cqrs.domain.shared.DateTimePatterns;
 import com.fasterxml.jackson.annotation.JsonCreator;

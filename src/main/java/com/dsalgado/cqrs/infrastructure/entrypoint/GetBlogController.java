@@ -1,6 +1,6 @@
 package com.dsalgado.cqrs.infrastructure.entrypoint;
 
-import com.dsalgado.cqrs.application.FindBlogQuery;
+import com.dsalgado.cqrs.application.blog.FindBlogQuery;
 import com.dsalgado.cqrs.domain.bus.QueryBus;
 import com.dsalgado.cqrs.domain.bus.QueryBusFactory;
 import javax.annotation.PostConstruct;

@@ -1,4 +1,4 @@
-package com.dsalgado.cqrs.application;
+package com.dsalgado.cqrs.application.counter;
 
 import com.dsalgado.cqrs.domain.bus.Response;
 

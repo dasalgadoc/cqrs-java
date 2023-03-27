@@ -1,4 +1,4 @@
-package com.dsalgado.cqrs.application;
+package com.dsalgado.cqrs.application.blog;
 
 import com.dsalgado.cqrs.domain.blog.BlogBrief;
 import com.dsalgado.cqrs.domain.blog.BlogId;

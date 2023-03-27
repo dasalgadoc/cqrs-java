@@ -1,9 +1,9 @@
 package com.dsalgado.cqrs.infrastructure.bus;
 
-import com.dsalgado.cqrs.application.BlogCounter;
-import com.dsalgado.cqrs.application.BlogCreator;
-import com.dsalgado.cqrs.application.CreateBlogCommand;
-import com.dsalgado.cqrs.application.PostBlogCommandHandler;
+import com.dsalgado.cqrs.application.blog.BlogCounter;
+import com.dsalgado.cqrs.application.blog.BlogCreator;
+import com.dsalgado.cqrs.application.blog.CreateBlogCommand;
+import com.dsalgado.cqrs.application.blog.PostBlogCommandHandler;
 import com.dsalgado.cqrs.domain.bus.Command;
 import com.dsalgado.cqrs.domain.bus.CommandHandler;
 import com.dsalgado.cqrs.domain.events.BlogCreatedDomainEvent;
