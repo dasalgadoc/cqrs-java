@@ -26,46 +26,46 @@ git clone https://github.com/dasalgadoc/cqrs-java.git
 mvn dependency:resolve
 ```
 4. Compile the project
-````bash
+```bash
 mvn compile && mvn package
-````
+```
 
 If you have errors using the previous command try this:
-````bash
+```bash
 mvn clean install -DskipTests
-````
+```
 5. Once target file and compile .jar were generated, you can run the docker environment.
 _Note_: If you change the project name, make sure to change the Dockerfile as well as follows.
    
-````dockerfile
+```dockerfile
 ARG JAR_FILE=./target/<COMPILED NAME>.jar
 
 ADD ${JAR_ILE} <COMPILED NAME>.jar
 
 ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/<COMPILED NAME>jar"]  
-````
+```
 
 Run the environment use
 
-````bash
+```bash
 docker-compose up --build
-````
+```
 
 ### 🤳🏻 Util commands
 
 You can run any docker from compose using:
-````bash
+```bash
 docker-compose up -d <CONTAINER NAME>
   
 docker-compose up -d mysql-container
-````
+```
 
 Also, you can access to any docker using:
-````bash
+```bash
 docker exec -it cqrs-java-<CONTAINER NAME>-1 bash
 
 docker exec -it cqrs-java-mysql-container-1 bash
-````
+```
 
 ## 🧳 Project use
 
@@ -87,7 +87,7 @@ Others, API endpoints are:
 #### 🙋🏻‍ Command (Async RabbitMQ)
 
 Create a blog
-````bash
+```bash
 curl --request POST \
   --url http://localhost:8085/blog \
   --header 'Content-Type: application/json' \
@@ -98,7 +98,7 @@ curl --request POST \
 	"brief": "My brief",
 	"url": "http://www.example.com"
 }'
-````
+```
 
 Beware! Body structure is important to this endpoint. Async commands and CQRS it's not about validation! So
 
@@ -127,7 +127,16 @@ curl --request GET \
 
 #### 💁🏻 Query (Sync in memory)
 
-````bash
+```bash
 curl --request GET \
   --url 'http://localhost:8085/count?entity_type=Blogs'
-````
+```
+
+## 🧭 Further work
+
+1. Improve async queue definitions using [AsyncAPI Topic Definition](https://github.com/fmvilas/topic-definition)
+2. Apply OCP to macrolevel
+    - 1 Publisher and 1 exchange
+    - Exchange topic type (this enables using filters)
+    - 1 queue per consumer and domain event, command and query.
+    - Handle when message fails and idempotency
